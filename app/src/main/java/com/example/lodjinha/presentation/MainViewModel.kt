@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.lodjinha.domain.product.GetProductListUseCase
 import com.example.lodjinha.domain.product.Product
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val getProductListUseCase: GetProductListUseCase,
+    private val rxSchedulers: RxSchedulers,
     private val productList: MutableLiveData<List<Product>> = MutableLiveData()
 ) : ViewModel() {
 
@@ -40,8 +39,8 @@ class MainViewModel @Inject constructor(
         disposables.add(
             getProductListUseCase
                 .execute(categoriaId = categoriaId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(rxSchedulers.ioThread)
+                .observeOn(rxSchedulers.androidMainThread)
                 .subscribe(this::handleProductList)
         )
     }
@@ -51,13 +50,15 @@ class MainViewModel @Inject constructor(
     }
 
     class MainViewModelFactory @Inject constructor(
-        private val getProductListUseCase: GetProductListUseCase
+        private val getProductListUseCase: GetProductListUseCase,
+        private val rxSchedulers: RxSchedulers
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return MainViewModel(
-                getProductListUseCase = getProductListUseCase
+                getProductListUseCase = getProductListUseCase,
+                rxSchedulers = rxSchedulers
             ) as T
         }
 
