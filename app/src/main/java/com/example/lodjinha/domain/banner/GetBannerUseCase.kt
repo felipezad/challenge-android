@@ -1,19 +1,19 @@
-package com.example.lodjinha.domain.product
+package com.example.lodjinha.domain.banner
 
 import com.exercise.musicshuffle.domain.UseCase
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetProductListUseCase @Inject constructor(private val productRepository: ProductRepository) : UseCase {
+class GetBannerUseCase @Inject constructor(private val bannerRepository: BannerRepository) : UseCase {
 
     sealed class Result {
         object Loading : Result()
-        data class Success(val productList: List<Product>) : Result()
+        data class Success(val bannerList: List<Banner>) : Result()
         data class Failure(val failure: Throwable) : Result()
     }
 
-    fun execute(categoriaId: Int): Observable<Result> {
-        return productRepository.getProducts(categoriaId = categoriaId)
+    fun execute(): Observable<Result> {
+        return bannerRepository.getBanner()
             .toObservable()
             .map { Result.Success(it) as Result }
             .onErrorReturn { Result.Failure(it) }
