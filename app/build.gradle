@@ -38,12 +38,18 @@ ext {
     roomVersion = '2.1.0-rc01'
     daggerVersion = '2.23.1'
     androidaggerVersion = '2.15'
+    androidRx = '2.1.1'
+    javaRx = '2.2.9'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     implementation 'androidx.core:core-ktx:1.2.0-alpha01'
+
+    //RxJava Android
+    implementation "io.reactivex.rxjava2:rxandroid:$androidRx"
+    implementation "io.reactivex.rxjava2:rxjava:$javaRx"
 
     // Room components
     implementation "androidx.room:room-runtime:$roomVersion"
