@@ -1,4 +1,4 @@
-package com.example.lodjinha.data.dagger
+package com.example.lodjinha.presentation.dagger
 
 import com.example.lodjinha.data.remote.LodjinhaApi
 import com.example.lodjinha.data.remote.LodjinhaApi.Companion.ENDPOINT
@@ -10,7 +10,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-object LodjinhaServiceModule {
+object ApplicationModule {
 
     @JvmStatic
     @Provides

@@ -1,21 +1,22 @@
 package com.example.lodjinha.presentation
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.example.lodjinha.R
-import com.example.lodjinha.data.dagger.DaggerLodjinhaServiceComponent
-import com.example.lodjinha.data.dagger.LodjinhaServiceComponent
-import com.example.lodjinha.data.remote.LodjinhaService
+import com.example.lodjinha.presentation.dagger.ApplicationComponent
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ComponentProvider<LodjinhaServiceComponent> {
+class MainActivity : AppCompatActivity() {
 
-    override val component: LodjinhaServiceComponent by lazy {
-        DaggerLodjinhaServiceComponent
-            .factory()
-            .create()
+    private val mainViewModel by lazy {
+        ViewModelProviders
+            .of(this, injector.mainViewModelFactory)
+            .get(MainViewModel::class.java)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +26,13 @@ class MainActivity : AppCompatActivity(), ComponentProvider<LodjinhaServiceCompo
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        mainViewModel.getProductList(categoriaId = 4)
     }
 
+    override fun onPause() {
+        mainViewModel.destroy()
+        super.onPause()
+    }
 }
+
+val Activity.injector get() = (application as ComponentProvider<ApplicationComponent>).component
