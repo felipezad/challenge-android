@@ -7,7 +7,14 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface LodjinhaApi {
+    companion object {
+        const val ENDPOINT: String = "https://alodjinha.herokuapp.com/"
+    }
 
     @GET("produto")
-    fun getProducts(@Query("id") artistId: String, @Query("limit") limit: Int = 5): Single<BasicResponse<ProductResponse>>
+    fun getProducts(
+        @Query("categoriaId") categoriaId: String,
+        @Query("limit") limit: Int = 5,
+        @Query("offset") offset: Int = 0
+    ): Single<BasicResponse<ProductResponse>>
 }
