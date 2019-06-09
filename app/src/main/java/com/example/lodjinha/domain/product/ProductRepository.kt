@@ -13,4 +13,8 @@ class ProductRepository @Inject constructor(
         return lodjinhaService.getServiceApi().getProducts(categoriaId = categoriaId)
             .map { productMapper.to(from = it.data) }
     }
+    fun getMostProductsSold(): Single<List<Product>> {
+        return lodjinhaService.getServiceApi().getMostProductsSold()
+            .map { productMapper.to(from = it.data) }
+    }
 }

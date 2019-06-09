@@ -26,7 +26,7 @@ interface LodjinhaApi {
     fun bookProduct(@Path("productId") productId: Int): Single<BookResponse>
 
     @GET("produto/maisvendidos")
-    fun getMostSoldProducts(): Single<BasicResponse<ProductResponse>>
+    fun getMostProductsSold(): Single<BasicResponse<ProductResponse>>
 
     @GET("banner")
     fun getBanner(): Single<BasicResponse<BannerResponse>>
