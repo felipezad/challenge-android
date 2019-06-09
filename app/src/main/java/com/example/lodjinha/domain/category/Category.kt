@@ -1,4 +1,4 @@
-package com.example.lodjinha.domain.product
+package com.example.lodjinha.domain.category
 
 data class Category(
     val descricao: String,

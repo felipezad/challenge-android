@@ -1,6 +1,6 @@
 package com.example.lodjinha.domain.product
 
-import com.example.lodjinha.data.model.CategoryResponse
+import com.example.lodjinha.domain.category.Category
 
 data class Product (
     val categoria : Category,

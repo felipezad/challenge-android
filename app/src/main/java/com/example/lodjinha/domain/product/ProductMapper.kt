@@ -2,6 +2,7 @@ package com.example.lodjinha.domain.product
 
 import com.example.lodjinha.data.model.CategoryResponse
 import com.example.lodjinha.data.model.ProductResponse
+import com.example.lodjinha.domain.category.Category
 import com.exercise.musicshuffle.domain.Mapper
 import javax.inject.Inject
 
