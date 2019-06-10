@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">@color/warmPurple</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/warmPurple</color>
+    <color name="colorPrimaryDark">@color/darkPurple</color>
+    <color name="colorAccent">@color/lightPurple</color>
 
     <color name="warmPurple">#5e2a84</color>
+    <color name="darkPurple">#2f0056</color>
+    <color name="lightPurple">#8e56b4</color>
+
     <color name="greyishBrown">#4a4a4a</color>
     <color name="tomato">#f15025</color>
     <color name="white">#d5d5d5</color>

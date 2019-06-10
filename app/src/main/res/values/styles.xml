@@ -19,11 +19,11 @@
     <style name="LogoSobre">
         <item name="android:textSize">64sp</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-1.5sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-1.5sp</item>-->
     </style>
     <style name="LogoMenu">
         <item name="android:textSize">24sp</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.6sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.6sp</item>-->
     </style>
 
     <style name="PrecoPor">
@@ -36,20 +36,20 @@
     </style>
 
     <style name="DescricaoProdutoBold">
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.4sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.4sp</item>-->
         <item name="android:textSize">17sp</item>
     </style>
 
     <style name="MenuItem">
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>-->
     </style>
 
 
     <style name="NomeDesenvolvedor">
         <item name="android:textSize">14sp</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>-->
     </style>
 
 
@@ -64,7 +64,7 @@
     <style name="DataDesenvolvimento">
         <item name="android:textSize">12sp</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">center</item>
-        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>
+        <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>-->
     </style>
 
     <!--<style name="">-->
