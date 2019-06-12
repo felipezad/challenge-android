@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.lodjinha">
+<manifest package="com.example.lodjinha"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-            android:name=".presentation.MyApplication"
             android:allowBackup="true"
+            android:fullBackupContent="false"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
+            android:name=".presentation.MyApplication"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:fullBackupContent="false"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".presentation.MainActivity"
+                android:label="@string/title_activity_best_seller"
+                android:name=".presentation.best_seller.BestSellerActivity"
+                android:parentActivityName=".presentation.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+        </activity>
+        <activity
+                android:label="@string/title_activity_product_list"
+                android:name=".presentation.product_list.ProductListActivity"
+                android:parentActivityName=".presentation.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+        </activity>
+        <activity
                 android:label="@string/title_activity_main"
+                android:name=".presentation.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
