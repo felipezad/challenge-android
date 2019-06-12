@@ -29,6 +29,7 @@
     <style name="PrecoPor">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/tomato</item>
     </style>
 
     <style name="DescricaoProduto">
@@ -42,6 +43,7 @@
 
     <style name="MenuItem">
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
         <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.3sp</item>-->
     </style>
 
@@ -55,10 +57,12 @@
 
     <style name="NomeCategoria">
         <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="PrecoDe">
         <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/greyish</item>
     </style>
 
     <style name="DataDesenvolvimento">

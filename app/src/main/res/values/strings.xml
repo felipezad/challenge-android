@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Lodjinha</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="mais_vendidos">Mais vendidos</string>
+    <string name="categorias">Categorias</string>
+    <string name="image_category">Image category</string>
 </resources>
