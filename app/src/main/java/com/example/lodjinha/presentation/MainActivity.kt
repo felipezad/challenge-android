@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         mainViewModel.getBanner()
         mainViewModel.getProductCategory()
+        mainViewModel.getProductCategory()
     }
 
     override fun onPause() {

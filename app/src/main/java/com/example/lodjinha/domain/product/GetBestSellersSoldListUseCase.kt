@@ -4,7 +4,7 @@ import com.exercise.musicshuffle.domain.UseCase
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class GetMostProductsSoldListUseCase @Inject constructor(private val productRepository: ProductRepository) : UseCase {
+class GetBestSellersSoldListUseCase @Inject constructor(private val productRepository: ProductRepository) : UseCase {
 
     sealed class Result {
         object Loading : Result()
@@ -13,7 +13,7 @@ class GetMostProductsSoldListUseCase @Inject constructor(private val productRepo
     }
 
     fun execute(): Observable<Result> {
-        return productRepository.getMostProductsSold()
+        return productRepository.getBestSellers()
             .toObservable()
             .map { Result.Success(it) as Result }
             .onErrorReturn { Result.Failure(it) }

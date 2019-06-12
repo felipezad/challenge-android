@@ -8,7 +8,7 @@ import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.domain.banner.GetBannerUseCase
 import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.domain.category.GetProductCategoryListUseCase
-import com.example.lodjinha.domain.product.GetMostProductsSoldListUseCase
+import com.example.lodjinha.domain.product.GetBestSellersSoldListUseCase
 import com.example.lodjinha.domain.product.GetProductListUseCase
 import com.example.lodjinha.domain.product.Product
 import io.reactivex.disposables.CompositeDisposable
@@ -18,10 +18,10 @@ class MainViewModel @Inject constructor(
     private val getProductListUseCase: GetProductListUseCase,
     private val getBannerUseCase: GetBannerUseCase,
     private val getProductCategoryListUseCase: GetProductCategoryListUseCase,
-    private val getMostProductsSoldListUseCase: GetMostProductsSoldListUseCase,
+    private val getBestSellersSoldListUseCase: GetBestSellersSoldListUseCase,
     private val rxSchedulers: RxSchedulers,
     val productList: MutableLiveData<List<Product>> = MutableLiveData(),
-    val mostProductsSoldList: MutableLiveData<List<Product>> = MutableLiveData(),
+    val bestSellersList: MutableLiveData<List<Product>> = MutableLiveData(),
     val banner: MutableLiveData<List<Banner>> = MutableLiveData(),
     val productCategories: MutableLiveData<List<Category>> = MutableLiveData()
 ) : ViewModel() {
@@ -44,16 +44,16 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun handleMostProductsSoldList(result: GetMostProductsSoldListUseCase.Result) {
+    private fun handleBestSellersList(result: GetBestSellersSoldListUseCase.Result) {
         when (result) {
-            is GetMostProductsSoldListUseCase.Result.Success -> {
-                mostProductsSoldList.postValue(result.productList)
+            is GetBestSellersSoldListUseCase.Result.Success -> {
+                bestSellersList.postValue(result.productList)
 
             }
-            is GetMostProductsSoldListUseCase.Result.Failure -> {
+            is GetBestSellersSoldListUseCase.Result.Failure -> {
                 Log.d("error", "Error")
             }
-            is GetMostProductsSoldListUseCase.Result.Loading -> {
+            is GetBestSellersSoldListUseCase.Result.Loading -> {
                 Log.d("loading", "Loading")
             }
         }
@@ -99,13 +99,13 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    fun getMostProductsSoldList() {
+    fun getBestSellersList() {
         disposables.add(
-            getMostProductsSoldListUseCase
+            getBestSellersSoldListUseCase
                 .execute()
                 .subscribeOn(rxSchedulers.ioThread)
                 .observeOn(rxSchedulers.androidMainThread)
-                .subscribe(this::handleMostProductsSoldList)
+                .subscribe(this::handleBestSellersList)
         )
     }
 
@@ -137,7 +137,7 @@ class MainViewModel @Inject constructor(
         private val getProductListUseCase: GetProductListUseCase,
         private val getBannerUseCase: GetBannerUseCase,
         private val getProductCategoryListUseCase: GetProductCategoryListUseCase,
-        private val getMostProductsSoldListUseCase: GetMostProductsSoldListUseCase,
+        private val getBestSellersSoldListUseCase: GetBestSellersSoldListUseCase,
         private val rxSchedulers: RxSchedulers
     ) : ViewModelProvider.Factory {
 
@@ -147,7 +147,7 @@ class MainViewModel @Inject constructor(
                 getProductListUseCase = getProductListUseCase,
                 getBannerUseCase = getBannerUseCase,
                 getProductCategoryListUseCase = getProductCategoryListUseCase,
-                getMostProductsSoldListUseCase = getMostProductsSoldListUseCase,
+                getBestSellersSoldListUseCase = getBestSellersSoldListUseCase,
                 rxSchedulers = rxSchedulers
             ) as T
         }
