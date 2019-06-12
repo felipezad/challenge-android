@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.domain.category.Category
+import com.example.lodjinha.domain.product.Product
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -30,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.productCategories.observe(this, Observer { categories ->
             updateCategoriesAdapter(categories)
         })
+        mainViewModel.bestSellersList.observe(this, Observer { bestSellersList ->
+            updateBestSellerAdapter(bestSellersList)
+        })
     }
 
     private fun initLayout(activityContext: Context) {
@@ -45,9 +49,11 @@ class MainActivity : AppCompatActivity() {
         recyclerViewBanner.adapter = BannerAdapter(it, Glide.with(this))
     }
 
-
     private fun updateCategoriesAdapter(it: List<Category>) {
         recyclerViewCategories.adapter = CategoryAdapter(it, Glide.with(this))
+    }
+    private fun updateBestSellerAdapter(it: List<Product>) {
+        recyclerViewBestSellers.adapter = BestSellerAdapter(it, Glide.with(this))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         mainViewModel.getBanner()
         mainViewModel.getProductCategory()
-        mainViewModel.getProductCategory()
+        mainViewModel.getBestSellersList()
     }
 
     override fun onPause() {

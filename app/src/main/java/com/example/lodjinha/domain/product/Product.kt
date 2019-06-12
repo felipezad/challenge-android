@@ -3,6 +3,7 @@ package com.example.lodjinha.domain.product
 import com.example.lodjinha.domain.category.Category
 
 data class Product (
+    val nome : String,
     val categoria : Category,
     val descricao : String,
     val id  : Long,

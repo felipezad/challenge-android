@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
@@ -30,7 +30,6 @@
             app:layout_constraintTop_toTopOf="@+id/imageViewProduct"
             tools:text="Descricao gradona demais Descricao gradona demais"/>
     <TextView
-            style="@style/PrecoDe"
             android:id="@+id/textViewPrecoDe"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -42,9 +41,9 @@
             app:layout_constraintStart_toEndOf="@+id/imageViewProduct"
             app:layout_constraintTop_toBottomOf="@+id/textViewProductDescription"
             app:layout_constraintVertical_bias="1.0"
+            style="@style/PrecoDe"
             tools:text="textViewPrecoDe"/>
     <TextView
-            style="@style/PrecoPor"
             android:id="@+id/textViewPrecoPor"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -60,5 +59,6 @@
             app:layout_constraintStart_toEndOf="@+id/textViewPrecoDe"
             app:layout_constraintTop_toBottomOf="@+id/textViewProductDescription"
             app:layout_constraintVertical_bias="1.0"
+            style="@style/PrecoPor"
             tools:text="textViewPrecoPor"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

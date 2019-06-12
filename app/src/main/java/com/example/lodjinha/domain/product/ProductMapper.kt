@@ -12,6 +12,7 @@ class ProductMapper @Inject constructor() : Mapper<ProductResponse, Product> {
         return from.run {
             Product(
                 id = this.id,
+                nome = this.nome,
                 categoria = this.categoria.toCategory(),
                 descricao = this.descricao,
                 precoDe = this.precoDe,
