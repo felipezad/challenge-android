@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.banner.Banner
+import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -25,16 +26,28 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.banner.observe(this, Observer { bannerList ->
             updateBannerAdapter(bannerList)
         })
+
+        mainViewModel.productCategories.observe(this, Observer { categories ->
+            updateCategoriesAdapter(categories)
+        })
     }
 
     private fun initLayout(activityContext: Context) {
         recyclerViewBanner.apply {
             setHasFixedSize(true)
         }
+        recyclerViewCategories.apply {
+            setHasFixedSize(true)
+        }
     }
 
     private fun updateBannerAdapter(it: List<Banner>) {
         recyclerViewBanner.adapter = BannerAdapter(it, Glide.with(this))
+    }
+
+
+    private fun updateCategoriesAdapter(it: List<Category>) {
+        recyclerViewCategories.adapter = CategoryAdapter(it, Glide.with(this))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +61,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         mainViewModel.getBanner()
+        mainViewModel.getProductCategory()
     }
 
     override fun onPause() {
