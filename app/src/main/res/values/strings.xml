@@ -6,4 +6,5 @@
     <string name="image_category">Image category</string>
     <string name="title_activity_product_list">ProductListActivity</string>
     <string name="title_activity_best_seller">BestSellerActivity</string>
+    <string name="banner_image">Banner Image</string>
 </resources>

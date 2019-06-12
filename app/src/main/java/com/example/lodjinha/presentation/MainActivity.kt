@@ -1,13 +1,17 @@
 package com.example.lodjinha.presentation
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.example.lodjinha.R
+import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,21 +21,33 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
     }
 
+    private fun setupViewModel() {
+        mainViewModel.banner.observe(this, Observer { bannerList ->
+            updateBannerAdapter(bannerList)
+        })
+    }
+
+    private fun initLayout(activityContext: Context) {
+        recyclerViewBanner.apply {
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun updateBannerAdapter(it: List<Banner>) {
+        recyclerViewBanner.adapter = BannerAdapter(it, Glide.with(this))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-
+        initLayout(this)
+        setupViewModel()
     }
 
     override fun onResume() {
         super.onResume()
-        mainViewModel.getProductList(categoriaId = 4)
+        mainViewModel.getBanner()
     }
 
     override fun onPause() {
