@@ -1,8 +1,8 @@
 package com.example.lodjinha.presentation
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -12,6 +12,7 @@ import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.domain.product.Product
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
+import kotlinx.android.synthetic.main.activity_drawer_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
@@ -36,7 +37,23 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun initLayout(activityContext: Context) {
+    private fun initLayout() {
+
+        setContentView(R.layout.activity_drawer_layout)
+
+        setSupportActionBar(toolbarLodjinha)
+
+        ActionBarDrawerToggle(
+            this,
+            drawerLodjinha,
+            toolbarLodjinha,
+            R.string.open_drawer,
+            R.string.close_drawer
+        ).apply {
+            drawerLodjinha.addDrawerListener(this)
+            this.syncState()
+        }
+
         recyclerViewBanner.apply {
             setHasFixedSize(true)
         }
@@ -52,15 +69,14 @@ class MainActivity : AppCompatActivity() {
     private fun updateCategoriesAdapter(it: List<Category>) {
         recyclerViewCategories.adapter = CategoryAdapter(it, Glide.with(this))
     }
+
     private fun updateBestSellerAdapter(it: List<Product>) {
         recyclerViewBestSellers.adapter = BestSellerAdapter(it, Glide.with(this))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        initLayout(this)
+        initLayout()
         setupViewModel()
     }
 

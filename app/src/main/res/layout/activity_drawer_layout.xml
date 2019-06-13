@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+        android:fitsSystemWindows="true"
+        android:id="@+id/drawerLodjinha"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:context=".presentation.MainActivity"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+
+    <include layout="@layout/activity_main"/>
+
+    <com.google.android.material.navigation.NavigationView
+            android:fitsSystemWindows="false"
+            android:id="@+id/nav_view"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/menu_drawer_lodjinha"
+    />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -7,4 +7,9 @@
     <string name="title_activity_product_list">ProductListActivity</string>
     <string name="title_activity_best_seller">BestSellerActivity</string>
     <string name="banner_image">Banner Image</string>
+    <string name="open_drawer">open drawer</string>
+    <string name="close_drawer">close drawer</string>
+    <string name="a_lodjinha">A LodJinha</string>
+    <string name="home">Home</string>
+    <string name="sobre_o_aplicativo">Sobre o aplicativo</string>
 </resources>
