@@ -11,7 +11,7 @@
 >
 
     <ImageView
-            android:background="@color/tomato"
+            android:background="@drawable/round_menu_logo"
             android:contentDescription="null"
             android:id="@+id/imageViewTagMenu"
             android:layout_height="64dp"
