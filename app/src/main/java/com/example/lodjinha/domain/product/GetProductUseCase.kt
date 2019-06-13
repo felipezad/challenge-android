@@ -12,7 +12,7 @@ class GetProductUseCase @Inject constructor(private val productRepository: Produ
         data class Failure(val failure: Throwable) : Result()
     }
 
-    fun execute(productId: Int): Observable<Result> {
+    fun execute(productId: Long): Observable<Result> {
         return productRepository.getProductDetail(productId = productId)
             .toObservable()
             .map { Result.Success(it) as Result }

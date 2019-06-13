@@ -20,7 +20,7 @@ interface LodjinhaApi {
     ): Single<BasicResponse<ProductResponse>>
 
     @GET("produto/{productId}")
-    fun getProduct(@Path("productId") productId: Int): Single<ProductResponse>
+    fun getProduct(@Path("productId") productId: Long): Single<ProductResponse>
 
     @POST("produto/{productId}")
     fun bookProduct(@Path("productId") productId: Int): Single<BookResponse>

@@ -14,7 +14,7 @@ class ProductRepository @Inject constructor(
             .map { productMapper.to(from = it.data) }
     }
 
-    fun getProductDetail(productId: Int): Single<Product> {
+    fun getProductDetail(productId: Long): Single<Product> {
         return lodjinhaService.getServiceApi().getProduct(productId = productId)
             .map { productMapper.to(from = it) }
     }

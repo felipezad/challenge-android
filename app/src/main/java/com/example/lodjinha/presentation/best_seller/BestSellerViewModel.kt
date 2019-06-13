@@ -35,7 +35,7 @@ class BestSellerViewModel @Inject constructor(
     }
 
 
-    fun getProductList(productId: Int) {
+    fun getBestSellerProduct(productId: Long) {
         disposables.add(
             getProductUseCase
                 .execute(productId = productId)
