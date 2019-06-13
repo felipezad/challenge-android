@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
             drawerLodjinha.addDrawerListener(this)
             this.syncState()
         }
+        navigationLodjinha.itemIconTintList = null
 
         recyclerViewBanner.apply {
             setHasFixedSize(true)

@@ -14,7 +14,7 @@
 
     <com.google.android.material.navigation.NavigationView
             android:fitsSystemWindows="false"
-            android:id="@+id/nav_view"
+            android:id="@+id/navigationLodjinha"
             android:layout_gravity="start"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
