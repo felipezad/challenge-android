@@ -47,7 +47,8 @@
 
     <style name="DescricaoProdutoBold">
         <!--<item name="android:letterSpacing" tools:targetApi="lollipop">-0.4sp</item>-->
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="MenuItem">
@@ -74,7 +75,7 @@
     </style>
 
     <style name="PrecoDe">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/greyish</item>
     </style>
 
