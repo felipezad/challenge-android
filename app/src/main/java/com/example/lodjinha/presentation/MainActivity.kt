@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.bumptech.glide.Glide
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.banner.Banner
@@ -15,6 +16,7 @@ import com.example.lodjinha.presentation.dagger.ApplicationComponent
 import kotlinx.android.synthetic.main.activity_drawer_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,8 +59,19 @@ class MainActivity : AppCompatActivity() {
         recyclerViewBanner.apply {
             setHasFixedSize(true)
         }
+
         recyclerViewCategories.apply {
             setHasFixedSize(true)
+        }
+
+        recyclerViewBestSellers.apply {
+            setHasFixedSize(true)
+            this.addItemDecoration(
+                DividerItemDecoration(
+                    this.context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
         }
     }
 
