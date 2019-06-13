@@ -15,6 +15,17 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
+                android:screenOrientation="portrait"
+                android:label="@string/title_activity_about"
+                android:name=".presentation.about.AboutActivity"
+                android:parentActivityName=".presentation.MainActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+        </activity>
+        <activity
+                android:screenOrientation="portrait"
                 android:label="@string/title_activity_best_seller"
                 android:name=".presentation.best_seller.BestSellerActivity"
                 android:parentActivityName=".presentation.MainActivity"
@@ -24,6 +35,7 @@
                     android:value="com.example.lodjinha.presentation.MainActivity"/>
         </activity>
         <activity
+                android:screenOrientation="portrait"
                 android:label="@string/title_activity_product_list"
                 android:name=".presentation.product_list.ProductListActivity"
                 android:parentActivityName=".presentation.MainActivity"
@@ -33,6 +45,7 @@
                     android:value="com.example.lodjinha.presentation.MainActivity"/>
         </activity>
         <activity
+                android:screenOrientation="portrait"
                 android:label="@string/title_activity_main"
                 android:name=".presentation.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
