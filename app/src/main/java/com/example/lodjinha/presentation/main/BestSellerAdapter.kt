@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation
+package com.example.lodjinha.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View

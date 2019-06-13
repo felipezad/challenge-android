@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation
+package com.example.lodjinha.presentation.main
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +11,7 @@ import com.example.lodjinha.domain.category.GetProductCategoryListUseCase
 import com.example.lodjinha.domain.product.GetBestSellersSoldListUseCase
 import com.example.lodjinha.domain.product.GetProductListUseCase
 import com.example.lodjinha.domain.product.Product
+import com.example.lodjinha.presentation.RxSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 

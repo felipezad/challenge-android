@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation
+package com.example.lodjinha.presentation.main
 
 import android.app.Activity
 import android.content.Intent
@@ -15,6 +15,7 @@ import com.example.lodjinha.R
 import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.domain.product.Product
+import com.example.lodjinha.presentation.ComponentProvider
 import com.example.lodjinha.presentation.about.AboutActivity
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
 import com.google.android.material.navigation.NavigationView
@@ -125,7 +126,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 }
 
-val Activity.injector get() = (application as ComponentProvider<ApplicationComponent>).component
+@Suppress("UNCHECKED_CAST")
+val Activity.injector
+    get() = (application as ComponentProvider<ApplicationComponent>).component
 
 inline fun <reified T : Activity> Activity.startActivityWithoutBundle(nextActivity: Class<T>) {
     startActivity(Intent(this, nextActivity))

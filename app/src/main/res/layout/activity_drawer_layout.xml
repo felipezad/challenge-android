@@ -4,7 +4,7 @@
         android:id="@+id/drawerLodjinha"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        tools:context=".presentation.MainActivity"
+        tools:context=".presentation.main.MainActivity"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">

@@ -18,36 +18,36 @@
                 android:screenOrientation="portrait"
                 android:label="@string/title_activity_about"
                 android:name=".presentation.about.AboutActivity"
-                android:parentActivityName=".presentation.MainActivity"
+                android:parentActivityName=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+                    android:value="com.example.lodjinha.presentation.main.MainActivity"/>
         </activity>
         <activity
                 android:screenOrientation="portrait"
                 android:label="@string/title_activity_best_seller"
                 android:name=".presentation.best_seller.BestSellerActivity"
-                android:parentActivityName=".presentation.MainActivity"
+                android:parentActivityName=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+                    android:value="com.example.lodjinha.presentation.main.MainActivity"/>
         </activity>
         <activity
                 android:screenOrientation="portrait"
                 android:label="@string/title_activity_product_list"
                 android:name=".presentation.product_list.ProductListActivity"
-                android:parentActivityName=".presentation.MainActivity"
+                android:parentActivityName=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.example.lodjinha.presentation.MainActivity"/>
+                    android:value="com.example.lodjinha.presentation.main.MainActivity"/>
         </activity>
         <activity
                 android:screenOrientation="portrait"
                 android:label="@string/title_activity_main"
-                android:name=".presentation.MainActivity"
+                android:name=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation
+package com.example.lodjinha.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +27,7 @@ class CategoryAdapter(private val categorys: List<Category>, private val request
 
     override fun getItemCount(): Int = categorys.size
 
-    class CategoryViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var imageViewCategory: ImageView = view.imageViewCategory
         private var textViewProductCategory: TextView = view.textViewProductCategory
 

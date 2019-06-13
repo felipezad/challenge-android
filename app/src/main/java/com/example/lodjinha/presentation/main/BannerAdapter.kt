@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation
+package com.example.lodjinha.presentation.main
 
 import android.content.Intent
 import android.net.Uri

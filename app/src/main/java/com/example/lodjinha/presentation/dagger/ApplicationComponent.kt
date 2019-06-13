@@ -1,6 +1,6 @@
 package com.example.lodjinha.presentation.dagger
 
-import com.example.lodjinha.presentation.MainViewModel
+import com.example.lodjinha.presentation.main.MainViewModel
 import dagger.Component
 import javax.inject.Singleton
 
