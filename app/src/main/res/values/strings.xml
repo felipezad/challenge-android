@@ -12,4 +12,5 @@
     <string name="a_lodjinha">A LodJinha</string>
     <string name="home">Home</string>
     <string name="sobre_o_aplicativo">Sobre o aplicativo</string>
+    <string name="title_activity_about">AboutActivity</string>
 </resources>

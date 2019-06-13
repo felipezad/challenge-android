@@ -1,9 +1,12 @@
 package com.example.lodjinha.presentation
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,13 +15,15 @@ import com.example.lodjinha.R
 import com.example.lodjinha.domain.banner.Banner
 import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.domain.product.Product
+import com.example.lodjinha.presentation.about.AboutActivity
 import com.example.lodjinha.presentation.dagger.ApplicationComponent
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val mainViewModel by lazy {
         ViewModelProviders
@@ -55,7 +60,10 @@ class MainActivity : AppCompatActivity() {
             drawerLodjinha.addDrawerListener(this)
             this.syncState()
         }
-        navigationLodjinha.itemIconTintList = null
+        with(navigationLodjinha) {
+            itemIconTintList = null
+            setNavigationItemSelectedListener(this@MainActivity)
+        }
 
         recyclerViewBanner.apply {
             setHasFixedSize(true)
@@ -105,6 +113,20 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.destroy()
         super.onPause()
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_about -> {
+                startActivityWithoutBundle(AboutActivity::class.java)
+            }
+        }
+        drawerLodjinha.closeDrawer(GravityCompat.START)
+        return true
+    }
 }
 
 val Activity.injector get() = (application as ComponentProvider<ApplicationComponent>).component
+
+inline fun <reified T : Activity> Activity.startActivityWithoutBundle(nextActivity: Class<T>) {
+    startActivity(Intent(this, nextActivity))
+}
