@@ -23,7 +23,7 @@ interface LodjinhaApi {
     fun getProduct(@Path("productId") productId: Long): Single<ProductResponse>
 
     @POST("produto/{productId}")
-    fun bookProduct(@Path("productId") productId: Int): Single<BookResponse>
+    fun bookProduct(@Path("productId") productId: Long): Single<BookResponse>
 
     @GET("produto/maisvendidos")
     fun getBestSellers(): Single<BasicResponse<ProductResponse>>

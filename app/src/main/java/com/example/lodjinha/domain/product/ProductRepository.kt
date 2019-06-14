@@ -1,16 +1,18 @@
 package com.example.lodjinha.domain.product
 
+import com.example.lodjinha.data.model.BookResponse
 import com.example.lodjinha.data.remote.LodjinhaService
 import io.reactivex.Single
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(
     private val productMapper: ProductMapper,
+    private val productBookedMapper: ProductBookedMapper,
     private val lodjinhaService: LodjinhaService
 ) {
 
-    fun getProducts(categoriaId: Long, offset : Int = 0): Single<List<Product>> {
-        return lodjinhaService.getServiceApi().getProducts(categoriaId = categoriaId, offset = offset )
+    fun getProducts(categoriaId: Long, offset: Int = 0): Single<List<Product>> {
+        return lodjinhaService.getServiceApi().getProducts(categoriaId = categoriaId, offset = offset)
             .map { productMapper.to(from = it.data) }
     }
 
@@ -22,5 +24,10 @@ class ProductRepository @Inject constructor(
     fun getBestSellers(): Single<List<Product>> {
         return lodjinhaService.getServiceApi().getBestSellers()
             .map { productMapper.to(from = it.data) }
+    }
+
+    fun bookProduct(productId: Long): Single<ProductBooked> {
+        return lodjinhaService.getServiceApi().bookProduct(productId = productId)
+            .map { productBookedMapper.to(from = it) }
     }
 }
