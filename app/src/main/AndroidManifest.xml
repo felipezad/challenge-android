@@ -46,7 +46,7 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:label="@string/title_activity_main"
+                android:label="@string/a_lodjinha"
                 android:name=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
