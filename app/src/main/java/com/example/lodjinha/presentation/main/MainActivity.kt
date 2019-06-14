@@ -32,10 +32,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setupViewModel() {
+        mainViewModel.getBanner()
+        mainViewModel.getProductCategory()
+        mainViewModel.getBestSellersList()
+
         mainViewModel.banner.observe(this, Observer { bannerList ->
             updateBannerAdapter(bannerList)
         })
-
         mainViewModel.productCategories.observe(this, Observer { categories ->
             updateCategoriesAdapter(categories)
         })
@@ -100,13 +103,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         initLayout()
         setupViewModel()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mainViewModel.getBanner()
-        mainViewModel.getProductCategory()
-        mainViewModel.getBestSellersList()
     }
 
     override fun onPause() {
