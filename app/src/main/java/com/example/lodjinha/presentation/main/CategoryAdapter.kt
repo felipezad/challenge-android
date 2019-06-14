@@ -1,5 +1,6 @@
 package com.example.lodjinha.presentation.main
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.category.Category
+import com.example.lodjinha.presentation.product_list.ProductListActivity
 import kotlinx.android.synthetic.main.category_page.view.*
 
 
@@ -22,7 +24,11 @@ class CategoryAdapter(private val categorys: List<Category>, private val request
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bind(categorys[position], requestManager)
-
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, ProductListActivity::class.java)
+            intent.putExtra("categoryId", categorys[position].id)
+            it.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = categorys.size

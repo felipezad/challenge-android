@@ -14,7 +14,7 @@ interface LodjinhaApi {
 
     @GET("produto")
     fun getProducts(
-        @Query("categoriaId") categoriaId: Int,
+        @Query("categoriaId") categoriaId: Long,
         @Query("limit") limit: Int = 5,
         @Query("offset") offset: Int = 0
     ): Single<BasicResponse<ProductResponse>>

@@ -21,7 +21,6 @@ class MainViewModel @Inject constructor(
     private val getProductCategoryListUseCase: GetProductCategoryListUseCase,
     private val getBestSellersSoldListUseCase: GetBestSellersSoldListUseCase,
     private val rxSchedulers: RxSchedulers,
-    val productList: MutableLiveData<List<Product>> = MutableLiveData(),
     val bestSellersList: MutableLiveData<List<Product>> = MutableLiveData(),
     val banner: MutableLiveData<List<Banner>> = MutableLiveData(),
     val productCategories: MutableLiveData<List<Category>> = MutableLiveData()
@@ -29,21 +28,6 @@ class MainViewModel @Inject constructor(
 
 
     private val disposables = CompositeDisposable()
-
-    private fun handleProductList(result: GetProductListUseCase.Result) {
-        when (result) {
-            is GetProductListUseCase.Result.Success -> {
-                productList.postValue(result.productList)
-
-            }
-            is GetProductListUseCase.Result.Failure -> {
-                Log.d("error", "Error")
-            }
-            is GetProductListUseCase.Result.Loading -> {
-                Log.d("loading", "Loading")
-            }
-        }
-    }
 
     private fun handleBestSellersList(result: GetBestSellersSoldListUseCase.Result) {
         when (result) {
@@ -88,16 +72,6 @@ class MainViewModel @Inject constructor(
                 Log.d("loading", "Loading")
             }
         }
-    }
-
-    fun getProductList(categoriaId: Int) {
-        disposables.add(
-            getProductListUseCase
-                .execute(categoriaId = categoriaId)
-                .subscribeOn(rxSchedulers.ioThread)
-                .observeOn(rxSchedulers.androidMainThread)
-                .subscribe(this::handleProductList)
-        )
     }
 
     fun getBestSellersList() {

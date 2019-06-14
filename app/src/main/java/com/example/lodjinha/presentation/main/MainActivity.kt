@@ -17,6 +17,7 @@ import com.example.lodjinha.domain.category.Category
 import com.example.lodjinha.domain.product.Product
 import com.example.lodjinha.presentation.about.AboutActivity
 import com.example.lodjinha.presentation.injector
+import com.example.lodjinha.presentation.startActivityWithoutBundle
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_drawer_layout.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -119,8 +120,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLodjinha.closeDrawer(GravityCompat.START)
         return true
     }
-}
-
-inline fun <reified T : Activity> Activity.startActivityWithoutBundle(nextActivity: Class<T>) {
-    startActivity(Intent(this, nextActivity))
 }
