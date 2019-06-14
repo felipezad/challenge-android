@@ -13,7 +13,9 @@ import javax.inject.Inject
 class ProductListViewModel @Inject constructor(
     private val getProductListUseCase: GetProductListUseCase,
     private val rxSchedulers: RxSchedulers,
-    val productListUseCase: MutableLiveData<List<Product>> = MutableLiveData()
+    val productListUseCase: MutableLiveData<List<Product>> = MutableLiveData(),
+    var currentOffset: Int = 0,
+    var categoryId: Long = 0
 ) : ViewModel() {
 
 
@@ -35,10 +37,10 @@ class ProductListViewModel @Inject constructor(
     }
 
 
-    fun getListProductByCategory(categoryId: Long) {
+    fun getListProductByCategory(categoryId: Long, offset: Int = 0) {
         disposables.add(
             getProductListUseCase
-                .execute(categoriaId = categoryId)
+                .execute(categoriaId = categoryId, offset = offset)
                 .subscribeOn(rxSchedulers.ioThread)
                 .observeOn(rxSchedulers.androidMainThread)
                 .subscribe(this::handleProductList)

@@ -12,8 +12,8 @@ class GetProductListUseCase @Inject constructor(private val productRepository: P
         data class Failure(val failure: Throwable) : Result()
     }
 
-    fun execute(categoriaId: Long): Observable<Result> {
-        return productRepository.getProducts(categoriaId = categoriaId)
+    fun execute(categoriaId: Long, offset: Int = 0): Observable<Result> {
+        return productRepository.getProducts(categoriaId = categoriaId, offset = offset)
             .toObservable()
             .map { Result.Success(it) as Result }
             .onErrorReturn { Result.Failure(it) }

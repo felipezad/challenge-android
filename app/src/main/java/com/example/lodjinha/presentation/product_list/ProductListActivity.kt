@@ -2,9 +2,12 @@ package com.example.lodjinha.presentation.product_list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.product.Product
@@ -20,26 +23,37 @@ class ProductListActivity : AppCompatActivity() {
             .get(ProductListViewModel::class.java)
     }
 
+    private lateinit var productListAdapter: ProductListAdapter
+
     private fun setupViewModel() {
         productViewModel.productListUseCase.observe(this, Observer { productList ->
-            updateProductList(productList)
+            if (productList.isNotEmpty()) {
+                if (!::productListAdapter.isInitialized) {
+                    createProductList(productList)
+                } else {
+                    productListAdapter.addProducts(productList)
+                }
+            }
+            loadingProgressBar.hide()
         })
     }
 
-    private fun updateProductList(productList: List<Product>) {
-        recyclerViewProductList.adapter = ProductListAdapter(productList, Glide.with(this))
+    private fun createProductList(productList: List<Product>) {
+        productListAdapter = ProductListAdapter(productList, Glide.with(this))
+        recyclerViewProductList.adapter = productListAdapter
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewModel()
-        retriveProductList()
+        retrieveProductList()
         initView()
     }
 
-    private fun retriveProductList() {
+    private fun retrieveProductList() {
         intent?.extras?.getLong("categoryId")?.let {
             productViewModel.getListProductByCategory(it)
+            productViewModel.categoryId = it
         }
     }
 
@@ -55,6 +69,24 @@ class ProductListActivity : AppCompatActivity() {
                     DividerItemDecoration.VERTICAL
                 )
             )
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    if (!loadingProgressBar.isVisible &&
+                        linearLayoutManager.itemCount <= linearLayoutManager.findLastVisibleItemPosition() + 2
+                    ) {
+                        loadingProgressBar.show()
+                        productViewModel.currentOffset += 20
+                        productViewModel.getListProductByCategory(
+                            productViewModel.categoryId,
+                            productViewModel.currentOffset
+                        )
+                    }
+                }
+            })
         }
+
     }
 }

@@ -1,6 +1,5 @@
 package com.example.lodjinha.presentation.product_list
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.product.Product
-import com.example.lodjinha.presentation.best_seller.BestSellerActivity
+import com.example.lodjinha.presentation.product_detail.ProductDetailActivity
+import com.example.lodjinha.presentation.startActivityWithProductId
 import kotlinx.android.synthetic.main.best_seller_page.view.*
 
 
-class ProductListAdapter(private val products: List<Product>, private val requestManager: RequestManager) :
+class ProductListAdapter(newProducts: List<Product>, private val requestManager: RequestManager) :
     RecyclerView.Adapter<ProductListAdapter.ProductViewHolder>() {
+
+    private val products: MutableList<Product> = newProducts.toMutableList()
+
+    fun addProducts(newProducts: List<Product>) {
+        products.addAll(newProducts)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.best_seller_page, parent, false)
@@ -26,9 +33,9 @@ class ProductListAdapter(private val products: List<Product>, private val reques
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bind(products[position], requestManager)
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, BestSellerActivity::class.java)
-            intent.putExtra("productId", products[position].id)
-            it.context.startActivity(intent)
+            holder.itemView.setOnClickListener {
+                it.context.startActivityWithProductId(ProductDetailActivity::class.java, products[position].id)
+            }
         }
     }
 

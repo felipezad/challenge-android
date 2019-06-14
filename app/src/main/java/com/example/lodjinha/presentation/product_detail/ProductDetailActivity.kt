@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation.best_seller
+package com.example.lodjinha.presentation.product_detail
 
 import android.os.Build
 import android.os.Bundle
@@ -15,16 +15,16 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_best_seller.*
 import kotlinx.android.synthetic.main.content_best_seller.*
 
-class BestSellerActivity : AppCompatActivity() {
+class ProductDetailActivity : AppCompatActivity() {
 
-    private val bestSellerViewModel by lazy {
+    private val productDetailViewModel by lazy {
         ViewModelProviders
-            .of(this, injector.bestSellersViewModel)
-            .get(BestSellerViewModel::class.java)
+            .of(this, injector.productDetailViewModel)
+            .get(ProductDetailViewModel::class.java)
     }
 
     private fun setupViewModel() {
-        bestSellerViewModel.bestSellerDetail.observe(this, Observer { productDetail ->
+        productDetailViewModel.productDetail.observe(this, Observer { productDetail ->
             updateBestSellerDetail(productDetail)
         })
     }
@@ -32,7 +32,7 @@ class BestSellerActivity : AppCompatActivity() {
     private fun updateBestSellerDetail(productDetail: Product) {
 
         with(productDetail) {
-            Glide.with(this@BestSellerActivity)
+            Glide.with(this@ProductDetailActivity)
                 .load(urlImagem)
                 .error(R.drawable.ic_launcher_foreground)
                 .placeholder(R.drawable.logo_navbar)
@@ -57,9 +57,14 @@ class BestSellerActivity : AppCompatActivity() {
         setupViewModel()
         val productBestSeller = intent?.extras?.getLong("productId")
         productBestSeller?.let {
-            bestSellerViewModel.getBestSellerProduct(it)
+            productDetailViewModel.getBestSellerProduct(it)
         }
 
+    }
+
+    override fun onDestroy() {
+        productDetailViewModel.destroy()
+        super.onDestroy()
     }
 
     private fun String.fromHtml(): Spanned? {

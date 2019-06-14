@@ -1,4 +1,4 @@
-package com.example.lodjinha.presentation.best_seller
+package com.example.lodjinha.presentation.product_detail
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -10,10 +10,10 @@ import com.example.lodjinha.presentation.RxSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class BestSellerViewModel @Inject constructor(
+class ProductDetailViewModel @Inject constructor(
     private val getProductUseCase: GetProductUseCase,
     private val rxSchedulers: RxSchedulers,
-    val bestSellerDetail: MutableLiveData<Product> = MutableLiveData()
+    val productDetail: MutableLiveData<Product> = MutableLiveData()
 ) : ViewModel() {
 
 
@@ -22,7 +22,7 @@ class BestSellerViewModel @Inject constructor(
     private fun handleProductList(result: GetProductUseCase.Result) {
         when (result) {
             is GetProductUseCase.Result.Success -> {
-                bestSellerDetail.postValue(result.productDetail)
+                productDetail.postValue(result.productDetail)
 
             }
             is GetProductUseCase.Result.Failure -> {
@@ -57,7 +57,7 @@ class BestSellerViewModel @Inject constructor(
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return BestSellerViewModel(
+            return ProductDetailViewModel(
                 getProductUseCase = getProductUseCase,
                 rxSchedulers = rxSchedulers
             ) as T

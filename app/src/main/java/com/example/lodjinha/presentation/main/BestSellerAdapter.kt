@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.example.lodjinha.R
 import com.example.lodjinha.domain.product.Product
-import com.example.lodjinha.presentation.best_seller.BestSellerActivity
+import com.example.lodjinha.presentation.product_detail.ProductDetailActivity
+import com.example.lodjinha.presentation.startActivityWithProductId
 import kotlinx.android.synthetic.main.best_seller_page.view.*
 
 
@@ -26,9 +27,7 @@ class BestSellerAdapter(private val products: List<Product>, private val request
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bind(products[position], requestManager)
         holder.itemView.setOnClickListener {
-            val intent = Intent(it.context, BestSellerActivity::class.java)
-            intent.putExtra("productId", products[position].id)
-            it.context.startActivity(intent)
+            it.context.startActivityWithProductId(ProductDetailActivity::class.java, products[position].id)
         }
     }
 

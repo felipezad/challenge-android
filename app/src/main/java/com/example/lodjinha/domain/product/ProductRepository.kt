@@ -9,8 +9,8 @@ class ProductRepository @Inject constructor(
     private val lodjinhaService: LodjinhaService
 ) {
 
-    fun getProducts(categoriaId: Long): Single<List<Product>> {
-        return lodjinhaService.getServiceApi().getProducts(categoriaId = categoriaId)
+    fun getProducts(categoriaId: Long, offset : Int = 0): Single<List<Product>> {
+        return lodjinhaService.getServiceApi().getProducts(categoriaId = categoriaId, offset = offset )
             .map { productMapper.to(from = it.data) }
     }
 

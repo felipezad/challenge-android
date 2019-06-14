@@ -26,8 +26,8 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:label="@string/title_activity_best_seller"
-                android:name=".presentation.best_seller.BestSellerActivity"
+                android:label="@string/title_activity_product_detail"
+                android:name=".presentation.product_detail.ProductDetailActivity"
                 android:parentActivityName=".presentation.main.MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <meta-data
