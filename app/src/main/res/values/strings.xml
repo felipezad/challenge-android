@@ -13,4 +13,5 @@
     <string name="home">Home</string>
     <string name="sobre_o_aplicativo">Sobre o aplicativo</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="data_desenvolvimento">13 de Junho 2019</string>
 </resources>
